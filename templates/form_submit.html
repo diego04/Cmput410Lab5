@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+    <script>
+function myFunction() {
+    var table = document.getElementById("myTable");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "NEW CELL1";
+    cell2.innerHTML = "NEW CELL2";
+}
+
+</script>
+
+  <script type=text/javascript>
+    $(function() {
+      $('a#calculate').bind('click', function() {
+        $.getJSON('/_add_numbers', {
+          category: $('input[name="category"]').val(),
+          priority: $('input[name="priority"]').val(),
+          description: $('input[name="description"]').val()
+
+        }, function(data) {
+          $("#result").text(data.result);
+    x = data.result
+
+	y = (data.result.length)-1
+    		
+    var table = document.getElementById("myTable");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML = data.result[y];
+
+
+    
+        });
+        return false;
+      });
+    });
+  </script>
+  <style>
+  table, td {
+    border: 1px solid black;
+}
+</style>
+  </head>
+  <body>
+  
+  <h1>This thing drops the table check hello.py</h1>
+Category: <input type="text" name="category" value="String"><br><br>
+Priority: <input type="text" name="priority" value="Integer"><br><br>
+Description: <input type="text" name="description" value="String"><br><br>
+
+    <span id="result">?</span>
+    <p><a href="javascript:void();" id="calculate">Add to list</a>
+    
+
+<table id="myTable">
+  <tr>
+
+	<td>Category|| Priority || Description</td>
+	</tr>
+	<tr>
+    <td>note table is deleted and re-created everytime server is turned off</td>
+
+  </tr>
+
+
+  </tr>
+</table>
+<br>
+
+<!--button onclick="myFunction()">Try it</button-->
+
+
+  </body>
+</html>
